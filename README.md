@@ -1,2 +1,2 @@
-# Examen Minim 1
+# Examen Minim 2
 ### 💻 Júlia Alós Mairal
