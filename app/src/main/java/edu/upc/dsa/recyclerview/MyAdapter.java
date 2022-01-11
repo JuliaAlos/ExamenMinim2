@@ -1,7 +1,6 @@
 package edu.upc.dsa.recyclerview;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +17,11 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    List<GitFollowers> followers;
+    List<GitRepos> repos;
     Context context;
 
-    public MyAdapter(Context context,List<GitFollowers> gitFollowers){
-        followers=gitFollowers;
+    public MyAdapter(Context context,List<GitRepos> gitRepos){
+        repos=gitRepos;
         this.context=context;
     }
 
@@ -35,13 +34,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        GitFollowers user=followers.get(position);
-        holder.name.setText(user.getLogin());
-        Glide.with(context).load(user.getAvatar_url()).into(holder.images);
-
+        GitRepos repo=repos.get(position);
+        holder.name.setText(repo.getName());
+        holder.lenguage.setText(repo.getLanguage());
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
             }
         });
@@ -50,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override//Numero de items que tenim
     public int getItemCount() {
-        return followers.size();
+        return repos.size();
     }
 
     /*****************************************************************
@@ -59,13 +58,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView name;
-        ImageView images;
+        TextView lenguage;
         ConstraintLayout mainLayout;
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
             name = itemView.findViewById(R.id.firstLine);
-            images=itemView.findViewById(R.id.imageView);
+            lenguage = itemView.findViewById(R.id.secondLine);
             mainLayout=itemView.findViewById(R.id.myLayout);
         }
     }

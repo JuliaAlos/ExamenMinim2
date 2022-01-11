@@ -11,10 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User"
+        android:textColor="#FFEB3B"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Name"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
 
@@ -24,9 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
+        android:hint="User name"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
@@ -35,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:onClick="buttonClick"
-        android:text="Explore followers"
+        android:text="send"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Name" />

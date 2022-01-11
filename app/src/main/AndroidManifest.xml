@@ -13,7 +13,7 @@
         android:theme="@style/Theme.RecyclerView"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Followers"
+            android:name=".Repositoris"
             android:exported="true" />
         <activity
             android:name=".Inicial"

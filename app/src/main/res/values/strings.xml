@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GitHub Followers</string>
+    <string name="app_name">GitHub Repos</string>
 
     <string-array name="titulos">
         <item>Titulo1</item>

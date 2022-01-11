@@ -11,29 +11,10 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface SwaggerAPI {
-    //GET the List of Tracks stored
-    @GET("tracks")
-    Call<List<Track>> getTracks();
-
-    //GET a single Track given its ID
-    @GET("tracks/{id}")
-    Call<Track> getTrackbyID(@Path("id") String trackid);
-
-    //POST (add) a Track
-    @POST("tracks")
-    Call<Track> addTrack(@Body Track track);
-
-    //PUT (edit) a Track
-    @PUT("tracks")
-    Call<Void> editTrack(@Body Track track); //API only returns a code error
-
-    //DELETE a Track
-    @DELETE("tracks/{id}")
-    Call<Void> deleteTrack(@Path("id") String trackid); //API only returns a code error
 
     @GET("users/{id}")
     Call<Git> getInfoUser(@Path("id") String userid);
 
-    @GET("users/{id}/followers")
-    Call<List<GitFollowers>> getFollowers(@Path("id") String userid);
+    @GET("users/{id}/repos")
+    Call<List<GitRepos>> getRepos(@Path("id") String userid);
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Followers">
+    tools:context=".Repositoris">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -17,30 +17,29 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/repositories"
+        android:id="@+id/followers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
-        android:text="Repositories"
+        android:text="Followers"
+        app:layout_constraintBottom_toTopOf="@+id/following"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
 
     <TextView
         android:id="@+id/following"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
         android:text="Following"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/repositories" />
+        app:layout_constraintStart_toStartOf="@+id/followers" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="FOLLOWERS"
+        android:text="REPOSITORIS"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,5 +66,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recyclerView2" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="#FFEB3B"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="@+id/followers"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

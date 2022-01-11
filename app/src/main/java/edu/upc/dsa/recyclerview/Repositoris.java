@@ -20,10 +20,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Followers extends AppCompatActivity {
+public class Repositoris extends AppCompatActivity {
     ImageView imageView;
-    TextView repos;
+    TextView followers;
     TextView following;
+    TextView name;
     RecyclerView recyclerView;
     String user;
 
@@ -32,17 +33,19 @@ public class Followers extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_followers);
+        setContentView(R.layout.activity_repositoris);
 
         imageView= findViewById(R.id.imageView2);
-        repos= findViewById(R.id.repositories);
+        followers= findViewById(R.id.followers);
         following=findViewById(R.id.following);
+        name=findViewById(R.id.userName);
         recyclerView=findViewById(R.id.recyclerView2);
 
         Glide.with(this).load(getIntent().getStringExtra("image")).into(imageView);
-        repos.setText("Repositories: "+ getIntent().getStringExtra("repos"));
+        followers.setText("Followers: "+ getIntent().getStringExtra("followers"));
         following.setText("Following: "+ getIntent().getStringExtra("following"));
         user= getIntent().getStringExtra("user");
+        name.setText(user);
 
         Retrofit retrofit= new Retrofit.Builder()
                 .baseUrl("https://api.github.com/")
@@ -51,25 +54,26 @@ public class Followers extends AppCompatActivity {
 
         swaggerAPI= retrofit.create(SwaggerAPI.class);
 
-        Call<List<GitFollowers>> call = swaggerAPI.getFollowers(user);
-        call.enqueue(new Callback<List<GitFollowers>>() {
+        Call<List<GitRepos>> call = swaggerAPI.getRepos(user);
+        call.enqueue(new Callback<List<GitRepos>>() {
             @Override
-            public void onResponse(Call<List<GitFollowers>>call, Response<List<GitFollowers>> response) {
+            public void onResponse(Call<List<GitRepos>>call, Response<List<GitRepos>> response) {
                 if(!response.isSuccessful()){
                     Log.d("MYAPP", "Error "+response.code());
                     return;
                 }
-                List<GitFollowers> followers = response.body();
+                List<GitRepos> repos = response.body();
                 Log.d("MYAPP", "RETROFIT "+response.code());
-                MyAdapter myAdapter= new MyAdapter(Followers.this,followers);
+                MyAdapter myAdapter= new MyAdapter(Repositoris.this,repos);
                 recyclerView.setAdapter(myAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(Followers.this));
+                recyclerView.setLayoutManager(new LinearLayoutManager(Repositoris.this));
                 findViewById(R.id.indicator).setVisibility(View.GONE);
+
 
             }
 
             @Override
-            public void onFailure(Call<List<GitFollowers>> call, Throwable t) {
+            public void onFailure(Call<List<GitRepos>> call, Throwable t) {
                 Log.d("MYAPP", "Error conexion servidor:"+t.getMessage());
             }
         });
